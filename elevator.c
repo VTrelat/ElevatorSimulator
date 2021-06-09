@@ -29,17 +29,14 @@ PersonList* enterElevator(Elevator *e, PersonList *list){
 }
 
 void stepElevator(Building *b){
-    Elevator* elev = b->elevator;
-    if (elev->currentFloor == elev->targetFloor){
-        elev->persons = exitElevator(elev);
-        elev->persons = enterElevator(elev, b->waitingLists+elev->currentFloor);
+    if(b->elevator->currentFloor == b->elevator->targetFloor){
+        PersonList* exit = exitElevator(b->elevator);
+        PersonList* enter = enterElevator(b->elevator, b->waitingLists);
     }
-    else{
-        if (elev->currentFloor > elev->targetFloor){
-            (elev->currentFloor)--;
-        }
-        else{
-            (elev->currentFloor)++;
-        }
+    if(b->elevator->currentFloor > b->elevator->targetFloor){
+        b->elevator->currentFloor--;
+    }
+    if(b->elevator->currentFloor < b->elevator->targetFloor){
+        b->elevator->currentFloor++;
     }
 }
