@@ -4,7 +4,9 @@
             "name": "Mac",
             "includePath": [
                 "${default}",
-                "/usr/local/Cellar/gcc/10.2.0/include/c++/10.2.0/tr1"
+                "/usr/local/Cellar/ncurses/6.2/include",
+                "/Users/vincent/Documents/MinesNancy/IntroDep/ElevatorSimulator/include",
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers"
             ],
             "defines": [],
             "macFrameworkPath": [],
