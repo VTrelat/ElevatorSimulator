@@ -19,3 +19,19 @@ Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
     out->waitingLists = waitingLists;
     return out;
 }
+
+void stepElevator(Building *b){
+    Elevator* elev = b->elevator;
+    if (elev->currentFloor == elev->targetFloor){
+        elev->persons = exitElevator(elev);
+        elev->persons = enterElevator(elev, b->waitingLists+elev->currentFloor);
+    }
+    else{
+        if (elev->currentFloor > elev->targetFloor){
+            (elev->currentFloor)--;
+        }
+        else{
+            (elev->currentFloor)++;
+        }
+    }
+}
