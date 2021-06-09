@@ -1,9 +1,10 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "person.h"
 #include "elevator.h"
 
 Elevator *create_elevator(int capacity, int currentFloor, PersonList *persons){
-    Elevator *out = malloc(sizeof(Elevator));
+    Elevator *out = (Elevator*) malloc(sizeof(Elevator));
     out->capacity = capacity;
     out->currentFloor = currentFloor;
     out->persons = persons;
@@ -12,7 +13,7 @@ Elevator *create_elevator(int capacity, int currentFloor, PersonList *persons){
 }
 
 Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingLists){
-    Building *out = malloc(sizeof(Building));
+    Building *out = (Building*) malloc(sizeof(Building));
     out->elevator = elevator;
     out->nbFloor = nbFloor;
     out->waitingLists = waitingLists;
