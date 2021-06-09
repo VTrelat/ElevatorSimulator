@@ -29,5 +29,5 @@ PersonList* enterElevator(Elevator *e, PersonList *list){
 }
 
 void stepElevator(Building *b){
-    
+
 }
