@@ -20,6 +20,14 @@ Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
     return out;
 }
 
+PersonList* exitElevator(Elevator *e){
+
+}
+
+PersonList* enterElevator(Elevator *e, PersonList *list){
+
+}
+
 void stepElevator(Building *b){
     Elevator* elev = b->elevator;
     if (elev->currentFloor == elev->targetFloor){

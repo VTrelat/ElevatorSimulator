@@ -1,6 +1,11 @@
 {
     "files.associations": {
-        "main.C": "cpp"
+        "main.C": "cpp",
+        "stdlib.h": "c",
+        "time.h": "c",
+        "ncurses.h": "c",
+        "person.h": "c",
+        "elevator.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
