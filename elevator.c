@@ -8,6 +8,7 @@ Elevator *create_elevator(int capacity, int currentFloor, PersonList *persons){
     out->currentFloor = currentFloor;
     out->persons = persons;
     out->targetFloor = NULL;
+    return out;
 }
 
 Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingLists){
@@ -15,4 +16,5 @@ Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
     out->elevator = elevator;
     out->nbFloor = nbFloor;
     out->waitingLists = waitingLists;
+    return out;
 }
