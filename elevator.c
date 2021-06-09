@@ -32,7 +32,16 @@ PersonList* exitElevator(Elevator *e){
 }
 
 PersonList* enterElevator(Elevator *e, PersonList *list){
-
+    int nbInElev = length(e->persons);
+    int nbWaiting = length(list);
+    PersonList* out=emptyPersonList();
+    int i = 0;
+    while(i+nbInElev < e->capacity && nbWaiting > 0){
+        out=insert(list+i, out);
+        //         ^^^^^^
+        // Je veux vien une confirmation sur cet argument
+        i++;
+    }
 }
 
 void stepElevator(Building *b){
