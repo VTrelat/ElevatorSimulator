@@ -9,3 +9,10 @@ Elevator *create_elevator(int capacity, int currentFloor, PersonList *persons){
     out->persons = persons;
     out->targetFloor = NULL;
 }
+
+Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingLists){
+    Building *out = malloc(sizeof(Building));
+    out->elevator = elevator;
+    out->nbFloor = nbFloor;
+    out->waitingLists = waitingLists;
+}
