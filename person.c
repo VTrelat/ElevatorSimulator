@@ -1,5 +1,6 @@
 #include "person.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 Person* createPerson(int src, int dest){
     Person* out = malloc(sizeof(Person));
@@ -12,5 +13,22 @@ PersonList* insert(Person* p, PersonList* list){
     PersonList *out = malloc(sizeof(PersonList));
     out->person = p;
     out->next = list;
+    return out;
+}
+
+int length(PersonList* p){
+    int i = 0;
+    PersonList *tmp = p;
+    while(tmp->next != NULL){
+        i++;
+        tmp = tmp->next;
+    }
+    return i;
+}
+
+PersonList* emptyPersonList(){
+    PersonList* out = malloc(sizeof(PersonList));
+    out->next=NULL;
+    out->person=NULL;
     return out;
 }
