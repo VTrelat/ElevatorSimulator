@@ -1,14 +1,21 @@
-#include <stdio.h>
 #include <stdlib.h>
-
-#include "elevator.h"
+#include <stdio.h>
 #include "person.h"
+#include "elevator.h"
 
 Elevator *create_elevator(int capacity, int currentFloor, PersonList *persons){
-    Elevator* elev = (Elevator*) malloc(sizeof(Elevator));
-    elev->capacity = capacity;
-    elev->currentFloor = currentFloor;
-    elev->targetFloor = NULL;
-    elev->persons = persons;
-    return elev;
+    Elevator *out = (Elevator*) malloc(sizeof(Elevator));
+    out->capacity = capacity;
+    out->currentFloor = currentFloor;
+    out->persons = persons;
+    out->targetFloor = NULL;
+    return out;
+}
+
+Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingLists){
+    Building *out = (Building*) malloc(sizeof(Building));
+    out->elevator = elevator;
+    out->nbFloor = nbFloor;
+    out->waitingLists = waitingLists;
+    return out;
 }
