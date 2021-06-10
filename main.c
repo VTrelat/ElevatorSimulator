@@ -104,6 +104,7 @@ PersonList **waitingLists =(PersonList **) malloc(nbFloor*sizeof(PersonList*));
     }
 
     // Update state machine of elevator !!!!
+    // Salut Benoit
     // stepElevator(building);
 
     wclear(win);   // clear display area
