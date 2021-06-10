@@ -8,7 +8,7 @@ Elevator *create_elevator(int capacity, int currentFloor, PersonList *persons){
     out->capacity = capacity;
     out->currentFloor = currentFloor;
     out->persons = persons;
-    out->targetFloor = NULL;
+    out->targetFloor = currentFloor;
     return out;
 }
 
@@ -21,7 +21,7 @@ Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
 }
 
 PersonList* exitElevator(Elevator *e){
-    PersonList* out = malloc(sizeof(PersonList));
+    PersonList* out = (PersonList*)malloc(sizeof(PersonList));
     PersonList* tmp = e->persons;
     while(tmp->next != NULL){
         if(tmp->person->dest == e->currentFloor){

@@ -16,4 +16,6 @@ PersonList* insert(Person *p, PersonList *list);
 PersonList* emptyPersonList();
 int length(PersonList* p);
 Person* get(PersonList* list, int i);
+void printPerson(Person* p);
+void printPersonList(PersonList* list);
 #endif

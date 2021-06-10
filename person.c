@@ -42,3 +42,15 @@ Person* get(PersonList* list, int i){
     }
     return tmp->person;
 }
+
+void printPerson(Person* p){
+    printf("%d%d", p->src, p->dest);
+}
+
+void printPersonList(PersonList* list){
+    PersonList* tmp = list;
+    while(tmp->next != NULL){
+        printPerson(tmp->person);
+        tmp=tmp->next;
+    }
+}

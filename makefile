@@ -1,4 +1,4 @@
-#FLAGS = -g
+FLAGS = -Wall -g
 all: main
 
 main.o: main.c
