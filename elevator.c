@@ -38,9 +38,7 @@ PersonList* enterElevator(Elevator *e, PersonList *list){
     PersonList* out=emptyPersonList();
     int i = 0;
     while(i+nbInElev < e->capacity && nbWaiting > 0){
-        out=insert(list+i, out);
-        //         ^^^^^^
-        // Je veux vien une confirmation sur cet argument
+        out=insert(get(list, i), out);
         i++;
     }
     return out;

@@ -32,3 +32,13 @@ PersonList* emptyPersonList(){
     out->person=NULL;
     return out;
 }
+
+Person* get(PersonList* list, int i){
+    int k=0;
+    PersonList* tmp = list;
+    while(k<i && tmp->next!=NULL){
+        tmp=tmp->next;
+        k++;
+    }
+    return tmp->person;
+}
