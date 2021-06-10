@@ -48,9 +48,14 @@ void printPerson(Person* p){
 }
 
 void printPersonList(PersonList* list){
+    printf("[");
     PersonList* tmp = list;
     while(tmp->next != NULL){
         printPerson(tmp->person);
+        if(tmp->next->next != NULL){
+            printf(", ");
+        }
         tmp=tmp->next;
     }
+    printf("]");
 }
