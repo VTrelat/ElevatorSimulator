@@ -29,6 +29,7 @@ PersonList* exitElevator(Elevator *e){
         }
         tmp = tmp->next;
     }
+    return out;
 }
 
 PersonList* enterElevator(Elevator *e, PersonList *list){
@@ -42,6 +43,7 @@ PersonList* enterElevator(Elevator *e, PersonList *list){
         // Je veux vien une confirmation sur cet argument
         i++;
     }
+    return out;
 }
 
 void stepElevator(Building *b){
