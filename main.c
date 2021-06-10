@@ -60,6 +60,9 @@ void DisplayBuilding(WINDOW *win, Building *b) {
 int main() {
   srand(time(NULL));   // should only be called once
 
+  // generate random number in [min, max]
+  // rand()%(max-min+1)+min
+
   // generate list of waiting persons
   int nbFloor = 5;
 PersonList **waitingLists =(PersonList **) malloc(nbFloor*sizeof(PersonList*));
@@ -101,7 +104,6 @@ PersonList **waitingLists =(PersonList **) malloc(nbFloor*sizeof(PersonList*));
     }
 
     // Update state machine of elevator !!!!
-
     stepElevator(building);
 
     wclear(win);   // clear display area
