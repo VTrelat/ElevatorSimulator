@@ -72,6 +72,7 @@ PersonList **waitingLists =(PersonList **) malloc(nbFloor*sizeof(PersonList*));
     for(int j=0 ; j<nbPerson ; j++) {
       int dest = rand() % (nbFloor);
       Person *p = createPerson(currentFloor, dest);
+      printPerson(p);
       waitingLists[currentFloor] = insert(p,waitingLists[currentFloor]);
     }
   }
@@ -104,8 +105,7 @@ PersonList **waitingLists =(PersonList **) malloc(nbFloor*sizeof(PersonList*));
     }
 
     // Update state machine of elevator !!!!
-    // Salut Benoit
-    // stepElevator(building);
+    stepElevator(building);
 
     wclear(win);   // clear display area
     box(win, 0,0); // display border of window

@@ -57,5 +57,5 @@ void printPersonList(PersonList* list){
         }
         tmp=tmp->next;
     }
-    printf("]");
+    printf("]\n");
 }
