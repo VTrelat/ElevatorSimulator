@@ -23,7 +23,7 @@ Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
 PersonList* exitElevator(Elevator *e){
     PersonList* out = (PersonList*)malloc(sizeof(PersonList));
     PersonList* tmp = e->persons;
-    while(tmp != NULL){
+    while(tmp->next != NULL || tmp->person != NULL){
         if(tmp->person->dest == e->currentFloor){
             out = insert(tmp->person, out);
         }
