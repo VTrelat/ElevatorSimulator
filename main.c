@@ -10,7 +10,7 @@
 #define PERSON_WIDTH 3
 
 void DisplayPersonList(WINDOW *win, PersonList *list, int level, int offset) {
-  while(list != NULL) {
+  while(list != NULL && list->person != NULL) {
     // display 25 for a person going from floor 2 to floor 5
     mvwaddch(win, level, offset, '0' + list->person->src);
     mvwaddch(win, level, offset+1, '0' + list->person->dest);
@@ -79,7 +79,11 @@ PersonList **waitingLists =(PersonList **) malloc(nbFloor*sizeof(PersonList*));
   // Initialize building and elevator
   int capacity = 3;
   int currentFloor = 0;
-  Elevator *elevator = create_elevator(capacity, currentFloor , NULL);
+  PersonList* testList = emptyPersonList();
+  Person* testPerson = createPerson(2,2);
+  testList = insert(testPerson, testList);
+  // Elevator *elevator = create_elevator(capacity, currentFloor , NULL);
+  Elevator *elevator = create_elevator(capacity, currentFloor , testList);
   Building *building = create_building(nbFloor, elevator, waitingLists);
 
   // Initialize ncurse display
