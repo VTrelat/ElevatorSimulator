@@ -33,30 +33,30 @@ PersonList* exitElevator(Elevator *e){
 }
 
 PersonList* enterElevator(Elevator *e, PersonList *list){
-    int nbInElev = length(e->persons);
-    int nbWaiting = length(list);
-    PersonList* out=emptyPersonList();
-    int i = 0;
-    while(i+nbInElev < e->capacity && nbWaiting > 0){
-        out=insert(get(list, i), out);
-        i++;
-    }
-    return out;
+    // int nbInElev = length(e->persons);
+    // int nbWaiting = length(list);
+    // PersonList* out=emptyPersonList();
+    // int i = 0;
+    // while(i+nbInElev < e->capacity && nbWaiting > 0){
+    //     out=insert(get(list, i), out);
+    //     i++;
+    // }
+    // return out;
+    return NULL;
 }
 
 void stepElevator(Building *b){
     Elevator* elev = b->elevator;
-    printPersonList(b->waitingLists);
-    // if (elev->currentFloor == elev->targetFloor){
-    //     elev->persons = exitElevator(elev);
-    //     elev->persons = enterElevator(elev, *(b->waitingLists+elev->currentFloor));
-    // }
-    // else{
-    //     if (elev->currentFloor > elev->targetFloor){
-    //         (elev->currentFloor)--;
-    //     }
-    //     else{
-    //         (elev->currentFloor)++;
-    //     }
-    // }
+    if (elev->currentFloor == elev->targetFloor){
+        elev->persons = exitElevator(elev);
+        elev->persons = enterElevator(elev, *(b->waitingLists+elev->currentFloor));
+    }
+    else{
+        if (elev->currentFloor > elev->targetFloor){
+            (elev->currentFloor)--;
+        }
+        else{
+            (elev->currentFloor)++;
+        }
+    }
 }

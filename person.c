@@ -17,6 +17,9 @@ PersonList* insert(Person* p, PersonList* list){
 }
 
 int length(PersonList* p){
+    if(p==NULL){
+        return 0;
+    }
     int i = 0;
     PersonList *tmp = p;
     while(tmp->next != NULL){

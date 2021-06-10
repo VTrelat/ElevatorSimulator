@@ -80,7 +80,8 @@ PersonList **waitingLists =(PersonList **) malloc(nbFloor*sizeof(PersonList*));
   // Initialize building and elevator
   int capacity = 3;
   int currentFloor = 0;
-  Elevator *elevator = create_elevator(capacity, currentFloor , NULL);
+  // Elevator *elevator = create_elevator(capacity, currentFloor , NULL);
+  Elevator *elevator = create_elevator(capacity, currentFloor , emptyPersonList());
   Building *building = create_building(nbFloor, elevator, waitingLists);
 
   // Initialize ncurse display
