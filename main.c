@@ -72,7 +72,6 @@ PersonList **waitingLists =(PersonList **) malloc(nbFloor*sizeof(PersonList*));
     for(int j=0 ; j<nbPerson ; j++) {
       int dest = rand() % (nbFloor);
       Person *p = createPerson(currentFloor, dest);
-      printPerson(p);
       waitingLists[currentFloor] = insert(p,waitingLists[currentFloor]);
     }
   }
