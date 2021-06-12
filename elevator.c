@@ -6,6 +6,7 @@
 Elevator *create_elevator(int capacity, int currentFloor, PersonList *persons){
     Elevator *out = (Elevator*) malloc(sizeof(Elevator));
     out->capacity = capacity;
+    out->currentNb = length(persons);
     out->currentFloor = currentFloor;
     out->persons = persons;
     out->targetFloor = currentFloor;
@@ -21,11 +22,15 @@ Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
 }
 
 PersonList* exitElevator(Elevator *e){
-    PersonList* out = (PersonList*)malloc(sizeof(PersonList));
+    PersonList* out = emptyPersonList();
     PersonList* tmp = e->persons;
     while(tmp != NULL && tmp->person != NULL){
-        if(tmp->person->dest == e->currentFloor){
+        if(tmp->person->dest != e->currentFloor){
             out = insert(tmp->person, out);
+        }
+        else
+        {
+            e->currentNb--;
         }
         tmp = tmp->next;
     }
@@ -33,22 +38,26 @@ PersonList* exitElevator(Elevator *e){
 }
 
 PersonList* enterElevator(Elevator *e, PersonList *list){
-    // int nbInElev = length(e->persons);
-    // int nbWaiting = length(list);
-    // PersonList* out=emptyPersonList();
-    // int i = 0;
-    // while(i+nbInElev < e->capacity && nbWaiting > 0){
-    //     out=insert(get(list, i), out);
-    //     i++;
-    // }
-    // return out;
-    return NULL;
+    PersonList* out=e->persons;
+    while(e->currentNb < e->capacity && list->person != NULL){
+        out=insert(list->person, out);
+        e->currentNb++;
+        if(list->next!=NULL){
+            *list=*(list->next);
+        }       
+        else
+        {
+            *list = *emptyPersonList();
+        }
+        
+    }
+    return out;
 }
 
 void stepElevator(Building *b){
     Elevator* elev = b->elevator;
     if (elev->currentFloor == elev->targetFloor){
-        elev->persons = exitElevator(elev); // il faut faire sortir les gens
+        elev->persons = exitElevator(elev);
         elev->persons = enterElevator(elev, *(b->waitingLists+elev->currentFloor));
     }
     else{

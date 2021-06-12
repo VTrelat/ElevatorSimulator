@@ -16,24 +16,28 @@ PersonList* insert(Person* p, PersonList* list){
     return out;
 }
 
-int length(PersonList* p){
-    if(p==NULL){
-        return 0;
-    }
-    int i = 0;
-    PersonList *tmp = p;
-    while(tmp->next != NULL){
-        i++;
-        tmp = tmp->next;
-    }
-    return i;
-}
 
 PersonList* emptyPersonList(){
     PersonList* out = malloc(sizeof(PersonList));
     out->next=NULL;
     out->person=NULL;
     return out;
+}
+
+int length(PersonList* p){
+    if(p==NULL){
+        return 0;
+    }
+    else
+    {
+    int i = 0;
+    PersonList *tmp = p;
+    while(tmp->person != NULL){
+        i++;
+        tmp = tmp->next;
+    }
+    return i;
+    }
 }
 
 Person* get(PersonList* list, int i){
@@ -51,14 +55,18 @@ void printPerson(Person* p){
 }
 
 void printPersonList(PersonList* list){
-    printf("[");
-    PersonList* tmp = list;
-    while(tmp->next != NULL){
-        printPerson(tmp->person);
-        if(tmp->next->next != NULL){
-            printf(", ");
+    if(list==NULL){
+        printf("Error in PrintPersonList : list is NULL");
+    } else {
+        printf("[");
+        PersonList* tmp = list;
+        while(tmp->next != NULL){
+            printPerson(tmp->person);
+            if(tmp->next->next != NULL){
+                printf(", ");
+            }
+            tmp=tmp->next;
         }
-        tmp=tmp->next;
     }
     printf("]\n");
 }
