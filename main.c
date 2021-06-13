@@ -1,5 +1,6 @@
 #include <time.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <ncurses.h>
 
 #include "elevator.h"
@@ -10,7 +11,7 @@
 #define PERSON_WIDTH 3
 
 void DisplayPersonList(WINDOW *win, PersonList *list, int level, int offset) {
-  while(list != NULL) {
+  while(list && list->person) {
     // display 25 for a person going from floor 2 to floor 5
     mvwaddch(win, level, offset, '0' + list->person->src);
     mvwaddch(win, level, offset+1, '0' + list->person->dest);
@@ -56,9 +57,11 @@ void DisplayBuilding(WINDOW *win, Building *b) {
   }
 }
 
-
 int main() {
   srand(time(NULL));   // should only be called once
+
+  // generate random number in [min, max]
+  // rand()%(max-min+1)+min
 
   // generate list of waiting persons
   int nbFloor = 5;
@@ -76,7 +79,11 @@ PersonList **waitingLists =(PersonList **) malloc(nbFloor*sizeof(PersonList*));
   // Initialize building and elevator
   int capacity = 3;
   int currentFloor = 0;
+  // PersonList* testList = emptyPersonList();
+  // testList = insert(createPerson(2,3), testList);
+  // testList = insert(createPerson(3,4), testList);
   Elevator *elevator = create_elevator(capacity, currentFloor , NULL);
+  // Elevator *elevator = create_elevator(capacity, currentFloor , testList);
   Building *building = create_building(nbFloor, elevator, waitingLists);
 
   // Initialize ncurse display
@@ -91,17 +98,18 @@ PersonList **waitingLists =(PersonList **) malloc(nbFloor*sizeof(PersonList*));
   while(run) {
     // Generate people in function of input (or quit if 'q')
     int input = wgetch(win);
-    if(input == 'q') {
+    if(input == 'q'){
       run = false;
-    } else {
+    } 
+    else{
       int level = input - '0';
       if(0 <= level && level < nbFloor) {
-	building->elevator->targetFloor = level;
+	      building->elevator->targetFloor = level;
+        beep();
       }
     }
 
     // Update state machine of elevator !!!!
-
     stepElevator(building);
 
     wclear(win);   // clear display area
