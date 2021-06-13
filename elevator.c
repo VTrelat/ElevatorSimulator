@@ -24,7 +24,7 @@ Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
 PersonList* exitElevator(Elevator *e){
     PersonList* out = emptyPersonList();
     PersonList* tmp = e->persons;
-    while(tmp != NULL && tmp->person != NULL){
+    while(tmp && tmp->person){
         if(tmp->person->dest != e->currentFloor){
             out = insert(tmp->person, out);
         }
@@ -39,7 +39,7 @@ PersonList* exitElevator(Elevator *e){
 
 PersonList* enterElevator(Elevator *e, PersonList *list){
     PersonList* out=e->persons;
-    while(e->currentNb < e->capacity && list->person != NULL){
+    while(e->currentNb < e->capacity && list->person){
         out=insert(list->person, out);
         e->currentNb++;
         if(list->next!=NULL){

@@ -10,7 +10,7 @@
 #define PERSON_WIDTH 3
 
 void DisplayPersonList(WINDOW *win, PersonList *list, int level, int offset) {
-  while(list != NULL && list->person != NULL) {
+  while(list && list->person) {
     // display 25 for a person going from floor 2 to floor 5
     mvwaddch(win, level, offset, '0' + list->person->src);
     mvwaddch(win, level, offset+1, '0' + list->person->dest);

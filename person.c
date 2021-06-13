@@ -37,22 +37,21 @@ int length(PersonList* p){
     if(p==NULL){
         return 0;
     }
-    else
-    {
-    int i = 0;
-    PersonList *tmp = p;
-    while(tmp->person != NULL){
-        i++;
-        tmp = tmp->next;
-    }
-    return i;
+    else{
+        int i = 0;
+        PersonList *tmp = p;
+        while(tmp->person){
+            i++;
+            tmp = tmp->next;
+        }
+        return i;
     }
 }
 
 Person* get(PersonList* list, int i){
     int k=0;
     PersonList* tmp = list;
-    while(k<i && tmp->next!=NULL){
+    while(k<i && tmp->next){
         tmp=tmp->next;
         k++;
     }
@@ -69,9 +68,9 @@ void printPersonList(PersonList* list){
     } else {
         printf("[");
         PersonList* tmp = list;
-        while(tmp->next != NULL){
+        while(tmp->next){
             printPerson(tmp->person);
-            if(tmp->next->next != NULL){
+            if(tmp->next->next){
                 printf(", ");
             }
             tmp=tmp->next;
