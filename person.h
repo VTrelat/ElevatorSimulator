@@ -13,6 +13,7 @@ typedef struct _PersonList {
 
 Person* createPerson(int src, int dest);
 PersonList* insert(Person *p, PersonList *list);
+PersonList* revert(PersonList* list);
 PersonList* emptyPersonList();
 int length(PersonList* p);
 Person* get(PersonList* list, int i);

@@ -16,6 +16,15 @@ PersonList* insert(Person* p, PersonList* list){
     return out;
 }
 
+PersonList* revert(PersonList* list){
+    PersonList *out = malloc(sizeof(PersonList));
+    while(list != NULL && list->person != NULL){
+        out = insert(list->person, out);
+        list = list->next;
+    }
+    return out;
+}
+
 
 PersonList* emptyPersonList(){
     PersonList* out = malloc(sizeof(PersonList));
