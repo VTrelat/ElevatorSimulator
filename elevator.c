@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <ncurses.h>
+
 #include "person.h"
 #include "elevator.h"
 

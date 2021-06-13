@@ -1,5 +1,6 @@
 #include <time.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <ncurses.h>
 
 #include "elevator.h"
@@ -56,7 +57,6 @@ void DisplayBuilding(WINDOW *win, Building *b) {
   }
 }
 
-
 int main() {
   srand(time(NULL));   // should only be called once
 
@@ -98,12 +98,14 @@ PersonList **waitingLists =(PersonList **) malloc(nbFloor*sizeof(PersonList*));
   while(run) {
     // Generate people in function of input (or quit if 'q')
     int input = wgetch(win);
-    if(input == 'q') {
+    if(input == 'q'){
       run = false;
-    } else {
+    } 
+    else{
       int level = input - '0';
       if(0 <= level && level < nbFloor) {
-	building->elevator->targetFloor = level;
+	      building->elevator->targetFloor = level;
+        beep();
       }
     }
 
